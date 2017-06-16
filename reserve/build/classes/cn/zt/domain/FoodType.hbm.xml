@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-22 21:06:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.zt.domain.FoodType" table="FoodType">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <property name="typeName" type="java.lang.String">
+            <column name="typeName" />
+        </property>
+        <property name="picture" type="java.lang.String" column="picture"></property>
+        
+       
+       <set name="orders" table="orders" lazy="false">
+       		<key>
+       			<column name="foodtype_id"></column>
+       		</key>
+       		<one-to-many class="cn.zt.domain.Orders"/>
+       </set>
+       
+       <set name="carts" table="Cart" lazy="false">
+       		<key>
+       			<column name="foodtype_id"></column>
+       		</key>
+       		<one-to-many class="cn.zt.domain.Cart"/>
+       </set>
+       
+       
+       
+    </class>
+</hibernate-mapping>

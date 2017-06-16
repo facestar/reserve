@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-22 21:06:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.zt.domain.Cart" table="Cart">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment"></generator>
+        </id>
+        
+        <property name="user_id" type="java.lang.Integer">
+        	<column name="user_id"></column>
+        </property>
+        <many-to-one name="foodtype" class="cn.zt.domain.FoodType" column="foodtype_id" lazy="false"></many-to-one>
+        <!-- 设多对多关联 -->
+        <set name="cart_details" table="Cart_detail"  >
+        	<!-- 此表作为后表的外键字段为key -->
+        	<key>
+        		<column name="cart_id"></column>
+        	</key>
+        	<one-to-many class="cn.zt.domain.Cart_detail" />
+        </set>
+       <property name="ftprice" type="java.lang.Double">
+        	<column name="ftprice"></column>
+        </property>
+        <property name="size" type="java.lang.String" column="size"></property>
+        <property name="kouwei" type="java.lang.String" column="kouwei"></property>
+    </class>
+</hibernate-mapping>

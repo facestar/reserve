@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-22 21:06:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.zt.domain.Cart_detail" table="Cart_detail">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="increment"></generator>
+        </id>
+       <many-to-one name="cart" class="cn.zt.domain.Cart" column="cart_id"></many-to-one>
+       
+       
+        <property name="food_number" type="java.lang.Integer">
+        	<column name="food_number"></column>
+        </property>
+        <property name="xiaoji" type="java.lang.Double" column="xiaoji"></property>
+        <many-to-one name="food" class="cn.zt.domain.Food" lazy="false" column="food_id"></many-to-one>
+    </class>
+</hibernate-mapping>

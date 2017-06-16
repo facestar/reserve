@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-11-22 21:06:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.zt.domain.Orders" table="orders">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment"></generator>
+        </id>
+        
+        <property name="orderNumber" type="java.lang.String">
+        	<column name="orderNumber"></column>
+        </property>
+        <property name="riqi" type="java.lang.String">
+        	<column name="riqi"></column>
+        </property>
+        <property name="jutishijian" type="java.lang.String">
+        	<column name="jutishijian"></column>
+        </property>
+        <property name="orderstime" type="java.lang.String">
+        	<column name="orderstime"></column>
+        </property>
+        <property name="totalprice" type="java.lang.String">
+        	<column name="totalprice"></column>
+        </property>
+        <property name="renshu" type="java.lang.String">
+        	<column name="renshu"></column>
+        </property>
+        <property name="status" type="java.lang.String">
+        	<column name="status"></column>
+        </property>
+        <property name="size" type="java.lang.String" column="size"></property>
+        <property name="kouwei" type="java.lang.String" column="kouwei"></property>
+        <many-to-one name="user" lazy="false" class="cn.zt.domain.User">
+        	<column name="user_id" ></column>
+        </many-to-one>
+        
+        <many-to-one name="foodtype" lazy="false" class="cn.zt.domain.FoodType">
+        	<column name="foodtype_id"></column>
+        </many-to-one>
+        <!-- 设置一对多关联 -->
+        <set name="orderes_details" table="orders_detail" lazy="false" >
+        	<!-- 此表作为后表的外键字段为key -->
+        	<key>
+        		<column name="order_id"></column>
+        	</key>
+        	<one-to-many class="cn.zt.domain.Orders_Detail" />
+        </set>
+        
+       
+    </class>
+</hibernate-mapping>
